@@ -7,6 +7,6 @@ jobs:
     steps:
       - name: Build release
         id: build
-        uses: 20k-ultra/build-release@v5
+        uses: 20k-ultra/build-release@v10
       - name: Get the release ID
-        run: echo "The time was ${{ steps.build.outputs.releaseId }}"
+        run: echo "The release ID was ${{ steps.build.outputs.releaseId }}"
