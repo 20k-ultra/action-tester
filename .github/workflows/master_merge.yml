@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Deploy release
         id: deploy
-        uses: 20k-ultra/deploy-release
+        uses: 20k-ultra/deploy-release@v1
