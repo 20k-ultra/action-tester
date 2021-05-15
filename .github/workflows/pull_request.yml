@@ -1,0 +1,10 @@
+on: [pull_request]
+
+jobs:
+  build_release:
+    runs-on: ubuntu-latest
+    name: build release
+    steps:
+      - name: Build release
+        id: build
+        uses: 20k-ultra/build-release
