@@ -7,4 +7,4 @@ jobs:
     steps:
       - name: Build release
         id: build
-        uses: 20k-ultra/build-release@v3
+        uses: 20k-ultra/build-release@v4
