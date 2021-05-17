@@ -1,0 +1,10 @@
+on: [release]
+
+jobs:
+  deploy_release:
+    runs-on: ubuntu-latest
+    name: deploy release
+    steps:
+      - name: Deploy release
+        id: deploy
+        uses: 20k-ultra/deploy-release@v2
