@@ -1,13 +1,11 @@
-name: "build-release"
+name: "balenaCloud"
 on: [pull_request]
 
 jobs:
-  build_release:
+  build:
     runs-on: ubuntu-latest
-    name: build release
+    name: "Build release"
     steps:
-      - name: Build release
+        name: "Build release"
         id: build
         uses: 20k-ultra/build-release@v10
-      - name: Get the release ID
-        run: echo "The release ID was ${{ steps.build.outputs.releaseId }}"
