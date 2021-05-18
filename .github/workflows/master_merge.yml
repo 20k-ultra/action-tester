@@ -1,3 +1,5 @@
+name: "deploy-release"
+
 on:
   pull_request:
     types: [closed]
