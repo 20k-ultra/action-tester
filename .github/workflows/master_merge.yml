@@ -1,3 +1,4 @@
+name: "eploy-release"
 on:
   pull_request:
     types: [closed]

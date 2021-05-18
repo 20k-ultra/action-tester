@@ -1,3 +1,4 @@
+name: "build-release"
 on: [pull_request]
 
 jobs:
