@@ -1,4 +1,7 @@
 # Action Tester
 ---
 
-This repo will trigger my action.
+This repo uses 2 actions:
+
+ - Build Release
+ - Deploy Release
