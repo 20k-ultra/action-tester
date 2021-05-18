@@ -1,4 +1,4 @@
-name: "deploy-release"
+name: "balenaCloud"
 
 on:
   pull_request:
