@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Deploy release
         id: deploy
-        uses: 20k-ultra/deploy-release@v2
+        uses: 20k-ultra/deploy-release@v5

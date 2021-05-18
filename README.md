@@ -1,4 +1,4 @@
 # Action Tester
 ---
 
-This repo will trigger my action
+This repo will trigger my action.
