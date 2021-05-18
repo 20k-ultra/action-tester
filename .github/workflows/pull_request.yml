@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     name: "Build release"
     steps:
-        name: "Build release"
+      - name: "Build release"
         id: build
         uses: 20k-ultra/build-release@v10
