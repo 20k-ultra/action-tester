@@ -1,4 +1,4 @@
-name: "deploy-release"
+name: "balenaCloud"
 
 on:
   pull_request:
@@ -13,4 +13,6 @@ jobs:
     steps:
       - name: Deploy release
         id: deploy
-        uses: 20k-ultra/deploy-release@v5
+        uses: 20k-ultra/deploy-release@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
