@@ -1,18 +1,18 @@
-name: "balenaCloud"
+name: 'balenaCloud'
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  build_release:
+  whoami:
     runs-on: ubuntu-latest
-    name: build release
+    name: Check who I am
     steps:
-      - name: Build release
-        id: build
-        uses: 20k-ultra/build-release@master
+      - name: Execute whoami
+        id: whoami
+        uses: balena-io-playground/github-actions/actions/whoami@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get the release ID
-        run: echo "The release ID was ${{ steps.build.outputs.releaseId }}"
+          balena_api_token: ${{ secrets.BALENA_API_TOKEN }}
+      - name: Log output from CLI
+        run: echo "You are authneitcated as ${{ steps.whoami.outputs.username }}"
