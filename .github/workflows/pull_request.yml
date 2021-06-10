@@ -5,14 +5,25 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  whoami:
+  build_release:
     runs-on: ubuntu-latest
-    name: Check who I am
+    name: build release # name of suite
     steps:
-      - name: Execute whoami
-        id: whoami
-        uses: balena-io-playground/github-actions/actions/whoami@master
+      - uses: actions/checkout@v2
+      - uses: balena-io-playground/github-actions/actions/build-release@master
+        id: build
         with:
-          balena_api_token: ${{ secrets.BALENA_API_TOKEN }}
-      - name: Log output from CLI
-        run: echo "You are authneitcated as ${{ steps.whoami.outputs.username }}"
+          balena_token: ${{ secrets.BALENA_TOKEN }}
+          application: hello-node
+      - run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
+      - uses: balena-io-playground/github-actions/actions/attach-release@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_id: ${{ steps.build.outputs.release_id }}
+          target_name: build release # name of this check suite
+      - uses: balena-io-playground/github-actions/actions/find-release@master
+        id: found
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          target_name: build release # name of this check suite
+      - run: echo "Found release ID ${{ steps.found.outputs.release_id }}"
