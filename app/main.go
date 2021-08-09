@@ -11,6 +11,6 @@ func main() {
 		w.Write([]byte("hello, world (from go!)\n"))
 	})
 	addr := ":80"
-    fmt.Println("Example app listening on port: ", addr)
+    fmt.Println("HTTP service listening on port: ", addr)
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
