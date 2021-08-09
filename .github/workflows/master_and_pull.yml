@@ -2,9 +2,7 @@ name: "balenaCloud"
 
 on:
   pull_request:
-    types: [opened, synchronize]
-  pull_request:
-    types: [closed]
+    types: [opened, synchronize, closed]
     branches:
       - master
 
