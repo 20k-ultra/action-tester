@@ -12,7 +12,6 @@ jobs:
   deploy_release:
     runs-on: ubuntu-latest
     steps:
-      steps:
       - name: Get current time
         uses: gerred/actions/current-time@master
         id: current-time
