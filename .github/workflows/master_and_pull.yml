@@ -1,22 +1,16 @@
+name: testing
 
 on:
   push:
-  check_suite:
-    types: [completed]
 
 jobs:
   job1:
     runs-on: [ubuntu-latest]
     name: Log who I am
     steps:
-      - name: Get current time
-        uses: gerred/actions/current-time@master
-        id: current-time
-      - name: Use current time
-        env:
-          TIME: "${{ steps.current-time.outputs.time }}"
-        run: echo $TIME
+      - name: Dump ENV
+        run: env
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: cat "$GITHUB_EVENT_PATH"
