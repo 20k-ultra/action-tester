@@ -1,4 +1,4 @@
-# Action Tester
+## Action Tester
 
 This repo uses 2 actions to automate balenaCloud releases:
 
