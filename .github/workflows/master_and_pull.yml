@@ -1,8 +1,9 @@
 
 on:
-  push:
-  check_suite:
-    types: [completed]
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+      - master
 
 jobs:
   job1:
