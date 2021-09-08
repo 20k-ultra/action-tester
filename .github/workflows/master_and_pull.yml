@@ -1,13 +1,14 @@
+name: build-release
 
 on:
-  push:
-  check_suite:
-    types: [completed]
+ pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+      - master
 
 jobs:
   job1:
     runs-on: [ubuntu-latest]
-    name: Log who I am
     steps:
       - name: Get current time
         uses: gerred/actions/current-time@master
@@ -16,7 +17,7 @@ jobs:
         env:
           TIME: "${{ steps.current-time.outputs.time }}"
         run: echo $TIME
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      - name: Dump event
+        run: cat "$GITHUB_EVENT_PATH"
+      - name: Dump ENV
+        run: env
