@@ -1,4 +1,4 @@
-name: build-release
+name: workflow-name
 
 on:
  pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   job1:
+    name: job-name
     runs-on: [ubuntu-latest]
     steps:
       - name: Get current time
