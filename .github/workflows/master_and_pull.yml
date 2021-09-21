@@ -1,7 +1,8 @@
 name: balenaci # Workflow must contain a name
 
 on:
-  push:
+ pull_request:
+    types: [opened, synchronize, closed]
     branches:
       - master
 
