@@ -11,49 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: balena-io/balena-ci@master
+      - uses: 20k-ultra/balena-ci@remove-github-token-input 
         id: build
         with:
           balena_token: ${{ secrets.BALENA_TOKEN }}
           fleet: miguel3/hello-node 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Log release ID built
         run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
-  raspberry-pi-1:
+  raspberry-pi:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: balena-io/balena-ci@master
+      - uses: 20k-ultra/balena-ci@remove-github-token-input 
         id: build
         with:
           balena_token: ${{ secrets.BALENA_TOKEN }}
-          fleet: miguel3/hello-node-pi1 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Log release ID built
-        run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
-  staging-raspberry-pi-4:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: balena-io/balena-ci@master
-        id: build
-        with:
-          balena_token: ${{ secrets.BALENA_STAGING_TOKEN }}
-          environment: balena-staging.com
-          fleet: miguel/hello-node 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Log release ID built
-        run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
-  staging-raspberry-pi-1:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: balena-io/balena-ci@master
-        id: build
-        with:
-          balena_token: ${{ secrets.BALENA_STAGING_TOKEN }}
-          environment: balena-staging.com
-          fleet: miguel/hello-node-pi1 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fleet: miguel3/hello-node 
+          versionbot: true
       - name: Log release ID built
         run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
