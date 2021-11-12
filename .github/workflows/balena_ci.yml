@@ -1,4 +1,4 @@
-name: balenaCloud releases
+name: balenaCloud
 
 on:
  pull_request:
@@ -7,15 +7,17 @@ on:
       - master
 
 jobs:
-  raspberry-pi-4:
+  deploy:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        fleet: [hello-node, hello-node-pi1]
     steps:
       - uses: actions/checkout@v2
       - uses: balena-io/balena-ci@master
-        id: build
+        name: 'Deploy to miguel/${{ matrix.fleet }}'
         with:
-          balena_token: ${{ secrets.BALENA_TOKEN }}
-          fleet: miguel3/hello-node 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Log release ID built
-        run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
+          balena_token: ${{ secrets.BALENA_STAGING_TOKEN }} 
+          environment: balena-staging.com
+          fleet: 'miguel/${{ matrix.fleet }}' 
