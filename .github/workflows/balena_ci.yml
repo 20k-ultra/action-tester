@@ -15,7 +15,7 @@ jobs:
         fleet: [hello-node, hello-node-pi1]
     steps:
       - uses: actions/checkout@v2
-      - uses: balena-io/balena-ci@24-terminate-build
+      - uses: balena-io/balena-ci@master
         name: 'Deploy to miguel/${{ matrix.fleet }}'
         with:
           balena_token: ${{ secrets.BALENA_STAGING_TOKEN }} 
