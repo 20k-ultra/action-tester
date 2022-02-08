@@ -1,11 +1,9 @@
 name: balenaCloud
 
 on:
-  pull_request:
-    types: [opened, synchronize, closed]
+  push:
     branches:
       - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
