@@ -1,7 +1,7 @@
 name: balenaCloud
 
 on:
- pull_request:
+  pull_request:
     types: [opened, synchronize, closed]
     branches:
       - master
@@ -15,9 +15,10 @@ jobs:
         fleet: [hello-node, hello-node-pi1]
     steps:
       - uses: actions/checkout@v2
-      - uses: balena-io/balena-ci@master
+      - uses: balena-io/balena-ci@add-tests
         name: 'Deploy to miguel/${{ matrix.fleet }}'
         with:
           balena_token: ${{ secrets.BALENA_STAGING_TOKEN }} 
           environment: balena-staging.com
           fleet: 'miguel/${{ matrix.fleet }}' 
+          create_tag: true
