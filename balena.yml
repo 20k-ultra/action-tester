@@ -1,5 +1,0 @@
-name: hello-world
-description: 'Go Hello world' 
-joinable: false
-type: sw.application
-version: 1.0.5
