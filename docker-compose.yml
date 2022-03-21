@@ -15,5 +15,3 @@ services:
     build: ./data
     expose:
       - "8080"
-  private:
-    image: 20kultra/aarch64-supervisor:verbose-apply-steps3
