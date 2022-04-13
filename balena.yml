@@ -1,5 +1,5 @@
-name: hello-world
-description: 'Go Hello world' 
+name: balena-supervisor
+description: 'Balena Supervisor: balena''s agent on devices.'
 joinable: false
 type: sw.application
-version: 1.0.5
+version: 15.0.0 
