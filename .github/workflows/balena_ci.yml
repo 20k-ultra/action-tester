@@ -20,3 +20,4 @@ jobs:
           environment: balena-staging.com
           fleet: 'miguel/${{ matrix.fleet }}' 
           create_tag: true
+          default_branch: potato
