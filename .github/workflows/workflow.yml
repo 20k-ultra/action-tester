@@ -1,0 +1,8 @@
+on: push
+env:
+  runs_on: '["ubuntu-latest"]'
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ fromJSON(env.runs_on)}}"
