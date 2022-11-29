@@ -1,8 +1,21 @@
 on: push
-env:
-  runs_on: '["ubuntu-latest"]'
 jobs:
-  job1:
+  versions:
     runs-on: ubuntu-latest
+    outputs:
+      python: ${{ steps.python_versions.outputs.json }}
     steps:
-      - run: echo "${{ fromJSON(env.runs_on)}}"
+      - name: Set Python versions
+        if: inputs.python_enabled == 'true'
+        id: python_versions
+        run: echo "json=[\"\^3.7\"]" >> $GITHUB_OUTPUT
+  python_stuff:
+    runs-on: ubuntu-latest
+    needs:
+      - versions
+    if: inputs.python_enabled == 'true'
+    strategy:
+      matrix:
+        python-version: ${{ fromJSON(needs.versions.outputs.python_versions) }}
+    steps:
+      - run: echo "doing stuff with ${{ matrix.python-version }}"
