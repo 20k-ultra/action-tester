@@ -1,8 +1,9 @@
 name: balenaCloud
-
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, closed]
     branches:
+      - main
       - master
 jobs:
   deploy:
@@ -13,11 +14,11 @@ jobs:
         fleet: [hello-node, hello-node-pi1]
     steps:
       - uses: actions/checkout@v2
-      - uses: balena-io/deploy-to-balena-action@add-target-default-branch
-        name: 'Deploy to miguel/${{ matrix.fleet }}'
+      - uses: balena-io/deploy-to-balena-action@ab77-patch-1
+        name: "Deploy to miguel/${{ matrix.fleet }}"
         with:
-          balena_token: ${{ secrets.BALENA_STAGING_TOKEN }} 
+          balena_token: ${{ secrets.BALENA_STAGING_TOKEN }}
           environment: balena-staging.com
-          fleet: 'miguel/${{ matrix.fleet }}' 
+          fleet: "miguel/${{ matrix.fleet }}"
           create_tag: true
-          default_branch: 'master'
+          default_branch: "master"
