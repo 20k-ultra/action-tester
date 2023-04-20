@@ -1,0 +1,21 @@
+name: test
+
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Webhook Integration Tests
+    steps:
+      - uses: cerebruminc/svix-proxy-action@master
+        id: proxy
+        with:
+          port: 8080
+      - name: Log URL to send webhook postbacks to
+        run: |
+          echo "Postback URL -> ${{ steps.proxy.outputs.postback_url }}"
